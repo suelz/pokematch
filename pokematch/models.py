@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(128), nullable=False)
     bio = db.Column(db.String(256), nullable = False)
     birthday = db.Column(db.DateTime, nullable = False)
-    distance = db.Column(db.Integer, default = 10, nullable = False)
+    distance = db.Column(db.Integer, default = 10000, nullable = False)
     gender = db.Column(db.String(12), nullable = False)
     preference = db.Column(db.String(12), nullable = False)
     min = db.Column(db.Integer, nullable = False)
