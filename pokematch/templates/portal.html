@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<style>
+	
+		:root {
+			--input-padding-x: 1.5rem;
+			--input-padding-y: .75rem;
+		}
+		
+		body {
+			background: #ef4362;
+		}
+		.btn-circle.btn-xl {
+    width: 75px;
+    height: 75px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+	</style>
+	
+  </head>
+  <div class="wrapper">
+      <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand" href="#">POKéMATCH</a>
+
+      </nav>
+      <main role="main" class="content">
+          <div class="container mt-5">
+              <div class="jumbotron mb-0 pb-0 rounded-0" style="height: 94vh;">
+                  <div class="row pt-3">
+                      <div class="col-6 offset-3 text-center">
+                          <img class="rounded-circle" src="{{current_user.pic_path()}}" width="128" height="128">
+                          <h2>{{current_user.name}}</h2>
+                      </div>
+                  </div>
+                  <hr>
+                  <div class="row pt-5">
+                      <div class="col-1 offset-1">
+                          <a class="btn btn-circle btn-xl btn-danger" href="{{url_for('messages')}}"><i class="fas fa-lg fa-heart pt-3"></i></a>
+                          <h5>Matches</h5>
+                      </div>
+                      <div class="col-1 offset-5">
+                          <a class="btn btn-circle btn-xl btn-success" href="{{url_for('edit')}}"><i class="fas fa-user-cog fa-lg pt-3"></i></a>
+                          <h5>Settings</h5>
+                      </div>
+                  </div>
+                  <div class="row text-center" style="padding-top: 5em;">
+                      <div class="col-1 offset-1">
+                          <a class="btn btn-circle btn-xl btn-info" href="{{url_for('swipe')}}"><i class="fas fa-lg fa-binoculars pt-3"></i></a>
+                          <h5 class="pl-2">Swipe</h5>
+                      </div>
+                      <div class="col-2 offset-5">
+                          <a class="btn btn-circle btn-xl btn-success" href="{{url_for('logoff')}}"><i class="fas fa-sign-out-alt fa-lg pt-3"></i></a>
+                          <h5>Sign&nbspOut</h5>
+                      </div>
+
+                  </div>
+              </div>
+
+
+      </main><!-- /.container -->
+  </div>
+    <footer>
+
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

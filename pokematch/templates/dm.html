@@ -1,0 +1,142 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<style>
+	
+		:root {
+			--input-padding-x: 1.5rem;
+			--input-padding-y: .75rem;
+		}
+		
+		body {
+			background: #ef4362;
+		}
+		
+		#messagegroup {
+			overflow-y: scroll;
+			height:75%; /* Probably Wrong */
+	
+		}
+		.msg-right{
+	font-size: 13px;
+    background:#3BA1EE;
+    padding:10px;
+    text-align:right;
+    color:#fff;
+    max-width:70%;
+    float:right;
+border-radius: 2.5em 2.5em 1em 2.5em;
+}
+.msg-left{
+font-size: 13px;
+    background:#ddd;
+    padding:10px;
+    margin:10px;
+    max-width:70%;
+
+    float:left;
+border-radius: 2.5em 2.5em 2.5em 1em;
+}
+
+		
+	</style>
+	
+  </head>
+  <div class="wrapper">
+      <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+          <a class="nav-item" href="{{url_for("messages")}}"><i style="color: white;" class="fas fa-2x fa-arrow-left pr-2"></i></a>
+          <a class="navbar-brand" href="#">POKéMATCH</a>
+
+      </nav>
+      <main role="main" class="content">
+          <div class="container mt-5">
+              <div class="jumbotron mb-0 pb-0 rounded-0" style="height: 95vh;">
+                  <div class="text-center">
+                      <img src="{{other.pic_path()}}" class="rounded-circle mx-auto pt-2 pb-1" width="60" height="60" />
+                      <h4 class="unmsg-title pb-0">{{other.name|safe}}</h4>
+                  </div>
+                  <hr />
+                  <div id="messagegroup">
+                      {% for msg in msgs: %}
+
+                      <div class="row pt-2">
+                          <div class="col">
+                              {% if msg.sender == current_user.id %}
+
+                              <div class="msg-right">{{ msg.contents|safe }}</div>
+                              {% else %}
+                              <div class="msg-left">{{ msg.contents|safe }}</div>
+                              {% endif %}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <div class="row">
+                      <form id="msg" autocomplete="off">
+                          <div class="form-row">
+                              <div class="col-10 pl-4">
+                                  <input type="text" id="message" name="message" class="form-control" required>
+                              </div>
+                              <div class="col-2">
+                                  <input type="hidden" id="other_user" name="other_user" value="{{other.id}}" />
+                                  <button class="btn btn-primary btn-success" type="submit">Send</button>
+                              </div>
+                          </div>
+                  </div>
+      </main><!-- /.container -->
+  </div>
+    <footer>
+
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+<script>
+$("#msg").submit(function (event) {
+            event.preventDefault();
+            var formData = $('#msg').serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ url_for('send_message') }}',
+                data: formData
+            })
+                .done(function (data) {
+                    if (data["success"] === true) {
+                        addMsg($("#message").val(), true);
+                    }
+                    else {
+                        alert("Message failed to send.");
+                    }
+                });
+	});
+	function addMsg(message, own) {
+		var cls = ""
+		if(own) {
+			cls = "msg-right";
+			$("#message").val("");
+		}
+		else {
+			cls = "msg-left";
+		}
+		$("#messagegroup").append('<div class="row pt-2"><div class="col"><div class="' + cls + ' ">' + message + '</div></div></div>');
+	}
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

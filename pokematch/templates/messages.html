@@ -1,0 +1,175 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<style>
+	
+		:root {
+			--input-padding-x: 1.5rem;
+			--input-padding-y: .75rem;
+		}
+		
+		body {
+			background: #ef4362;
+		}
+		.unmsg-title {
+			color: #ef4362;
+		}
+		
+		.card-login {
+			border: 0;
+			border-radius: 1rem;
+			box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			padding-top: 1rem;
+		}
+		
+		.card-login .card-title {
+			margin-bottom: 2rem;
+			font-weight: 100;
+			font-size: 1.5rem;
+		}
+		
+		.card-login card-body {
+			padding: 2rem;
+		}
+		
+		.form-login {
+			width: 100%;
+		}
+		
+		.form-login .btn {
+			font-size: 100%;
+			border-radius: 3em;
+			letter-spacing: 0.1rem;
+			font-weight: bold;
+			padding: 1rem;
+			transition: all 0.2s;
+		}
+				
+		.form-label-group {
+		  position: relative;
+		  margin-bottom: 1rem;
+		}
+		.form-label-group input {
+		  height: auto;
+		  border-radius: 2rem;
+		}
+		.form-label-group>input,
+		.form-label-group>label {
+		  padding: var(--input-padding-y) var(--input-padding-x);
+		}
+		.form-label-group>label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			margin-bottom: 0;
+			/* Override default `<label>` margin */
+			line-height: 1.5;
+			color: #495057;
+			border: 1px solid transparent;
+			border-radius: .25rem;
+			transition: all .1s ease-in-out;
+		}
+		.form-label-group input::-webkit-input-placeholder {
+			color: transparent;
+		}
+		.form-label-group input:-ms-input-placeholder {
+			color: transparent;
+		}
+		.form-label-group input::-ms-input-placeholder {
+		  color: transparent;
+		}
+		.form-label-group input::-moz-placeholder {
+		  color: transparent;
+		}
+		.form-label-group input::placeholder {
+		  color: transparent;
+		}
+		.form-label-group input:not(:placeholder-shown) {
+		  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+		  padding-bottom: calc(var(--input-padding-y) / 3);
+		}
+		.form-label-group input:not(:placeholder-shown)~label {
+		  padding-top: calc(var(--input-padding-y) / 3);
+		  padding-bottom: calc(var(--input-padding-y) / 3);
+		  font-size: 12px;
+		  color: #777;
+		}
+		.unmessaged-container {
+			overflow-x: scroll;
+			overflow-y: hidden;
+			white-space: nowrap;
+		}
+		.unmessaged-container > .card {
+				display: inline-block;
+		}
+	</style>
+	
+  </head>
+    <div class="wrapper">
+    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <a class="nav-item" href="{{url_for("portal")}}"><i style="color: white;" class="fas fa-2x fa-arrow-left pr-2"></i></a>
+        <a class="navbar-brand" href="#">POKéMATCH</a>
+    
+    </nav>
+    <main role="main" class="content">
+        <div class="container mt-5">
+				<div class="jumbotron mb-0 pb-0 rounded-0" style="min-height: 90vh;">
+					<div class="text-center">
+						<h2 class="unmsg-title pb-0">Matches</h2>
+					</div>
+						<div class="unmessaged-container pb-2">
+                            {% for u in unmessaged: %}
+							<div class="card text-center">
+                                <a href="{{ url_for("dm", other_userid=u.id) }}">
+                                    <img src="{{ u.pic_path() }}" class="rounded-circle mx-auto pt-2 pb-1" width="60" height="60"></img>
+                                    <div class="card-header">{{ u.name|safe }}</div>
+                                </a>
+							</div>
+                            {% endfor %}
+						</div>
+                        <div class="pt-0 mt-0 list-group list-group-flush">
+                            <!--<div class="list-group-item list-group-item-primary text-center"><b>Messages</b></div> -->
+                            {% for key, message in messaged.items(): %}
+                            <a href="{{ url_for("dm", other_userid=message[1].id) }}" class="list-group-item list-group-item-action">
+
+                                <div class="pr-4 pl-2 float-left">
+                                    <img src="{{ message[1].pic_path() }}" class="rounded-circle" width="75" height="75">
+                                </div>
+                                <div class="pt-2">
+                                    <h5>{{ message[1].name|safe }}</h5>
+
+                                    <small>{{ message[0].contents|safe }}</small>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+					</div>
+					
+    </main><!-- /.container -->
+    </div>
+    <footer>
+
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

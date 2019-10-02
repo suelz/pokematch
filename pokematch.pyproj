@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>471c5ae4-9193-42ed-8bf9-5567909ccd53</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>runserver.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Web launcher</LaunchProvider>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+    <Name>pokematch</Name>
+    <RootNamespace>glucoseGuardianFlask</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.6</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="pokematch\models.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="runserver.py" />
+    <Compile Include="pokematch\__init__.py" />
+    <Compile Include="pokematch\views.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="pokematch\" />
+    <Folder Include="pokematch\static\" />
+    <Folder Include="pokematch\static\content\" />
+    <Folder Include="pokematch\static\fonts\" />
+    <Folder Include="pokematch\static\scripts\" />
+    <Folder Include="pokematch\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pokematch\static\blastoise.jpg" />
+    <Content Include="pokematch\static\bulbasaur.jpg" />
+    <Content Include="pokematch\static\butterfree.jpg" />
+    <Content Include="pokematch\static\caterpie.jpg" />
+    <Content Include="pokematch\static\charmeleon.jpg" />
+    <Content Include="pokematch\static\clefable.jpg" />
+    <Content Include="pokematch\static\ekans.jpg" />
+    <Content Include="pokematch\static\kakuna.jpg" />
+    <Content Include="pokematch\static\machoke.jpg" />
+    <Content Include="pokematch\static\mewtwo.jpg" />
+    <Content Include="pokematch\static\moltres.jpg" />
+    <Content Include="pokematch\static\nidoqueen.jpg" />
+    <Content Include="pokematch\static\ninetales.jpg" />
+    <Content Include="pokematch\static\oddish.jpg" />
+    <Content Include="pokematch\static\pidgeotto.jpg" />
+    <Content Include="pokematch\static\pikachu.jpg" />
+    <Content Include="pokematch\static\poliwhirl.jpg" />
+    <Content Include="pokematch\static\psyduck.jpg" />
+    <Content Include="pokematch\static\rattata.jpg" />
+    <Content Include="pokematch\static\sandshrew.jpg" />
+    <Content Include="pokematch\static\spearow.jpg" />
+    <Content Include="pokematch\static\wigglytuff.jpg" />
+    <Content Include="pokematch\templates\dm.html" />
+    <Content Include="pokematch\templates\login.html" />
+    <Content Include="pokematch\templates\messages.html" />
+    <Content Include="pokematch\templates\register.html" />
+    <Content Include="pokematch\templates\swipe.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="pokematch\static\content\bootstrap.css" />
+    <Content Include="pokematch\static\content\bootstrap.min.css" />
+    <Content Include="pokematch\static\content\site.css" />
+    <Content Include="pokematch\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="pokematch\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="pokematch\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="pokematch\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="pokematch\static\scripts\bootstrap.js" />
+    <Content Include="pokematch\static\scripts\bootstrap.min.js" />
+    <Content Include="pokematch\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="pokematch\static\scripts\jquery-1.10.2.js" />
+    <Content Include="pokematch\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="pokematch\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="pokematch\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="pokematch\static\scripts\jquery.validate.js" />
+    <Content Include="pokematch\static\scripts\jquery.validate.min.js" />
+    <Content Include="pokematch\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="pokematch\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="pokematch\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="pokematch\static\scripts\respond.js" />
+    <Content Include="pokematch\static\scripts\respond.min.js" />
+    <Content Include="pokematch\static\scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.6" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
